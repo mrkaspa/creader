@@ -37,11 +37,12 @@ fn main() -> Result<(), TallyError> {
         .collect();
     res?;
 
-    for (word, count) in words.lock()?.iter() {
+    words.lock()?.iter().for_each(|(word, count)| {
         if *count >= 1 {
             println!("{} = {}", word, count);
         }
-    }
+    });
+
     Ok(())
 }
 
